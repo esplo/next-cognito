@@ -1,0 +1,12 @@
+FROM node:9.0.0-alpine
+LABEL maintainer="esplo@users.noreply.github.com"
+
+COPY . /app
+
+WORKDIR /app
+
+RUN npm install \
+    && npm run build
+
+CMD ["npm", "run", "start"]
+

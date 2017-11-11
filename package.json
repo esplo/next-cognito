@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "name": "next-cognito-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "author": "esplo <esplo@users.noreply.github.com> (https://github.com/esplo)",
+  "dependencies": {
+    "amazon-cognito-auth-js": "^1.0.0",
+    "autoprefixer": "^7.1.5",
+    "cookie": "^0.3.1",
+    "js-cookie": "^2.2.0",
+    "jss": "^9.0.0",
+    "jss-preset-default": "^4.0.1",
+    "material-ui": "^0.19.4",
+    "moment": "^2.19.1",
+    "next": "^4.1.4",
+    "next-redux-wrapper": "^1.3.4",
+    "next-routes": "^1.1.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-tap-event-plugin": "^3.0.2",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-form": "^7.1.2",
+    "redux-form-material-ui": "^4.3.0",
+    "redux-form-website-template": "0.0.80",
+    "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.6"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-react": "^7.4.0",
+    "redux-devtools-extension": "^2.13.2"
+  }
+}

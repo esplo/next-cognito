@@ -1,0 +1,6 @@
+FROM node:9.0.0-alpine
+LABEL maintainer="esplo@users.noreply.github.com"
+
+WORKDIR /app
+
+CMD ["sh", "-c", "npm install && npm run dev"]
