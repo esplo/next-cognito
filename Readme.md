@@ -1,6 +1,6 @@
 # next-js-cognito-frontend
 
-A Next.js example with amazon-cognito-auth-js.
+a SPA exmaple by Next.js with amazon-cognito-auth-js
 
 ## this example illustrates
 
@@ -10,17 +10,20 @@ A Next.js example with amazon-cognito-auth-js.
 - fetch id-token in a JWT
 - submit user's inputs with id-token via redux-form
 
-## keywords
+## key technologies
 
 - next.js
 - amazon-cognito-auth-js
 - Redux
 - Redux-form
+- next-router
 - material-ui
 - eslint
 - docker
 
 ## usage
+
+remove `.sample` from `credential/cognito.json.sample`, and modify it
 
 ### development
 
@@ -35,3 +38,4 @@ $ docker run -it -v .:/app -p 3111:3000 next-cognito-dev
 $ docker build -f Dockerfile.prod -t next-cognito-prod .
 $ docker run -p 3000:3000 next-cognito-prod
 ```
+
