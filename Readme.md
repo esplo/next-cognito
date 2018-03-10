@@ -29,8 +29,10 @@ remove `.sample` from `credential/cognito.json.sample`, and modify it
 
 ```bash
 $ docker build -f Dockerfile.dev -t next-cognito-dev .
-$ docker run -it -v .:/app -p 3111:3000 next-cognito-dev
+$ docker run -it -v $(pwd):/app -p 3111:3000 next-cognito-dev
 ```
+
+access http://localhost:3111/
 
 ### production
 
