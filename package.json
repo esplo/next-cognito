@@ -30,7 +30,7 @@
     "redux-actions": "^2.2.1",
     "redux-form": "^7.1.2",
     "redux-form-material-ui": "^4.3.0",
-    "redux-form-website-template": "0.0.80",
+    "redux-form-website-template": "0.0.123",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6"
   },
