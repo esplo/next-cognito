@@ -12,6 +12,7 @@
   },
   "author": "esplo <esplo@users.noreply.github.com> (https://github.com/esplo)",
   "dependencies": {
+    "@material-ui/core": "^1.4.3",
     "amazon-cognito-auth-js": "^1.2.4",
     "autoprefixer": "^9.1.0",
     "cookie": "^0.3.1",

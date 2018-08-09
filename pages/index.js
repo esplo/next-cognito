@@ -1,7 +1,10 @@
 import * as React from 'react';
 import {Link} from '../routes';
 import ApplicationLayout from '../hoc/ApplicationLayout';
-import AppBar from 'material-ui/AppBar';
+import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import {connect} from 'react-redux';
 import IndexForm from '../forms/indexForm';
 import PropTypes from 'prop-types';
@@ -34,10 +37,13 @@ class Page extends React.Component {
 
     return (
       <div>
-        <AppBar
-          title="Title"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-        />
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="title" color="inherit">
+              Title
+            </Typography>
+          </Toolbar>
+        </AppBar>
 
         {
           idToken ?
@@ -46,7 +52,7 @@ class Page extends React.Component {
               <div>token: {idToken}</div>
               <div>{this.parseIdToken(idToken)}</div>
 
-              <button onClick={this.logout}>Sign out</button>
+              <Button variant="outlined" onClick={this.logout}>Sign out</Button>
 
               <IndexForm
                 idToken={idToken}
@@ -54,7 +60,7 @@ class Page extends React.Component {
             </div>
             :
             <div>
-              <button onClick={this.login}>Sign in</button>
+              <Button variant="outlined" onClick={this.login}>Sign in</Button>
             </div>
         }
 

@@ -3,7 +3,7 @@ import {Field, reduxForm, submit} from 'redux-form';
 import {RadioButton} from 'material-ui/RadioButton';
 import {DatePicker, RadioButtonGroup, TextField} from 'redux-form-material-ui';
 import {connect} from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from '@material-ui/core/Button';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
@@ -46,11 +46,11 @@ const submitProcess = (values, dispatch, props) => {
 const RemoteSubmitButton = (props) => {
   const {dispatch, submitting, invalid} = props;
 
-  return <RaisedButton label="Submit"
-    type="button"
+  return <Button
+    variant="contained"
     onClick={() => dispatch(submit('syncValidation'))}
     disabled={submitting || invalid}
-  />;
+  >Submit</Button>;
 };
 
 RemoteSubmitButton.propTypes = {
@@ -63,7 +63,7 @@ const SubmitButton = connect((state) => state)(RemoteSubmitButton);
 
 const withError = ({meta, props}) => (
   <div>
-    <span {...props} className='error'>Error : {meta.error}</span><br />
+    <span {...props} className='error'>Error : {meta.error}</span><br/>
     <span {...props} className='warn'>Warn: {meta.warning}</span>
   </div>
 );
@@ -75,7 +75,9 @@ withError.propTypes = {
 
 const birthdayWithError = ({input, meta, ...props}) => {
   return <div>
-    <Field name="birthday" component={DatePicker}
+    <Field
+      name="birthday"
+      component={DatePicker}
       format={(value, name) => value || null}
       floatingLabelText="birthday"
       error="sss"
@@ -113,7 +115,12 @@ const SyncValidationForm = (props) => {
   return (
     <form>
       <div>
-        <Field name="username" type="text" component={TextField} hintText="esplo" floatingLabelText="username"/>
+        <Field
+          name="username"
+          type="text"
+          component={TextField}
+          hintText="esplo"
+          floatingLabelText="username"/>
       </div>
 
       <div>
@@ -121,14 +128,19 @@ const SyncValidationForm = (props) => {
       </div>
 
       <div>
-        <Field name="language" component={languageWithError} />
+        <Field name="language" component={languageWithError}/>
       </div>
 
       {error && <strong>{error}</strong>}
 
       <div>
         <SubmitButton submitting={submitting} invalid={invalid}/>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+        <Button
+          variant="outlined"
+          disabled={pristine || submitting}
+          onClick={reset}>
+          Clear Values
+        </Button>
       </div>
     </form>
   );
