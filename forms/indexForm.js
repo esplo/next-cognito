@@ -85,9 +85,9 @@ const birthdayWithError = ({input, meta, ...props}) => {
 };
 
 birthdayWithError.propTypes = {
-  input: PropTypes.object.isRequired,
-  meta: PropTypes.object.isRequired,
-  props: PropTypes.object.isRequired,
+  input: PropTypes.object,
+  meta: PropTypes.object,
+  props: PropTypes.object,
 };
 
 const languageWithError = ({input, meta, ...props}) => {
@@ -102,9 +102,9 @@ const languageWithError = ({input, meta, ...props}) => {
 };
 
 languageWithError.propTypes = {
-  input: PropTypes.object.isRequired,
-  meta: PropTypes.object.isRequired,
-  props: PropTypes.object.isRequired,
+  input: PropTypes.object,
+  meta: PropTypes.object,
+  props: PropTypes.object,
 };
 
 const SyncValidationForm = (props) => {
@@ -135,11 +135,11 @@ const SyncValidationForm = (props) => {
 };
 
 SyncValidationForm.propTypes = {
-  pristine: PropTypes.bool.isRequired,
-  reset: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
-  invalid: PropTypes.bool.isRequired,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func,
+  submitting: PropTypes.bool,
+  error: PropTypes.string,
+  invalid: PropTypes.bool,
 };
 
 const rf = reduxForm({
