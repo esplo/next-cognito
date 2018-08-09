@@ -15,6 +15,7 @@
     "amazon-cognito-auth-js": "^1.2.4",
     "autoprefixer": "^9.1.0",
     "cookie": "^0.3.1",
+    "isomorphic-unfetch": "^2.1.1",
     "js-cookie": "^2.2.0",
     "jss": "^9.8.7",
     "jss-preset-default": "^4.5.0",
