@@ -48,15 +48,26 @@ class Page extends React.Component {
         {
           idToken ?
             <div>
-              Logout Link
-              <div>token: {idToken}</div>
-              <div>{this.parseIdToken(idToken)}</div>
-
               <Button variant="outlined" onClick={this.logout}>Sign out</Button>
+
+              <Typography variant="title" gutterBottom>
+                  Token
+              </Typography>
+              {idToken}
+
+              <Typography variant="title" gutterBottom>
+                  Token as JSON
+              </Typography>
+              {this.parseIdToken(idToken)}
+
+              <Typography variant="title" gutterBottom>
+                Form
+              </Typography>
 
               <IndexForm
                 idToken={idToken}
               />
+
             </div>
             :
             <div>
@@ -65,6 +76,9 @@ class Page extends React.Component {
         }
 
         <div>
+          <Typography variant="headline" gutterBottom>
+            Links
+          </Typography>
           <div>
             <Link route='/blog/hello-world'>
               <a>Hello world</a>
