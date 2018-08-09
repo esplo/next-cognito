@@ -1,15 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import {Link} from '../routes';
 import ApplicationLayout from '../hoc/ApplicationLayout';
 import AppBar from 'material-ui/AppBar';
-
 import {connect} from 'react-redux';
-import {COGNITO_ID_TOKEN_COOKIE_NAME} from '../credentials/cognito';
-import fetchFromCookie from '../util/fetchFromCookie';
-
 import IndexForm from '../forms/indexForm';
+import PropTypes from 'prop-types';
 
-const Page = class extends React.Component {
+class Page extends React.Component {
   static async getInitialProps({req}) {
     return {};
   }
@@ -21,16 +18,16 @@ const Page = class extends React.Component {
       return JSON.stringify(ascii, null, 4);
     }
     return {};
-  }
+  };
 
   login = () => {
     this.props.auth.inst.getSession();
-  }
+  };
 
   logout = () => {
     this.props.auth.inst.signOut();
     this.props.logout();
-  }
+  };
 
   render() {
     const {idToken} = this.props.auth;
@@ -75,15 +72,16 @@ const Page = class extends React.Component {
       </div>
     );
   }
-};
+}
 
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
+Page.propTypes = {
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default ApplicationLayout(connect(mapStateToProps)(Page));

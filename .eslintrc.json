@@ -1,7 +1,8 @@
 {
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react",
+    "babel"
   ],
   "parserOptions": {
     "ecmaVersion": 8,
@@ -19,12 +20,16 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "google"
   ],
   "rules": {
     "arrow-parens":  ["error", "always"],
     "require-jsdoc": ["off"],
-    "new-cap": ["off"]
+    "new-cap": ["off"],
+    "indent": ["error", 2],
+    "max-len": ["off"],
+    "no-invalid-this": ["off"],
+    "babel/no-invalid-this": ["error"]
   }
 }
- 

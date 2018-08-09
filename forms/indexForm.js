@@ -1,9 +1,11 @@
+import * as React from 'react';
 import {Field, reduxForm, submit} from 'redux-form';
 import {RadioButton} from 'material-ui/RadioButton';
 import {DatePicker, RadioButtonGroup, TextField} from 'redux-form-material-ui';
 import {connect} from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 const validate = (values) => {
   const errors = {};
@@ -45,10 +47,16 @@ const RemoteSubmitButton = (props) => {
   const {dispatch, submitting, invalid} = props;
 
   return <RaisedButton label="Submit"
-                       type="button"
-                       onClick={() => dispatch(submit('syncValidation'))}
-                       disabled={submitting || invalid}
+    type="button"
+    onClick={() => dispatch(submit('syncValidation'))}
+    disabled={submitting || invalid}
   />;
+};
+
+RemoteSubmitButton.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  invalid: PropTypes.bool.isRequired,
 };
 
 const SubmitButton = connect((state) => state)(RemoteSubmitButton);
@@ -60,15 +68,26 @@ const withError = ({meta, props}) => (
   </div>
 );
 
+withError.propTypes = {
+  meta: PropTypes.object.isRequired,
+  props: PropTypes.object.isRequired,
+};
+
 const birthdayWithError = ({input, meta, ...props}) => {
   return <div>
     <Field name="birthday" component={DatePicker}
-           format={(value, name) => value || null}
-           floatingLabelText="birthday"
-           error="sss"
+      format={(value, name) => value || null}
+      floatingLabelText="birthday"
+      error="sss"
     />
     {withError({meta, props})}
   </div>;
+};
+
+birthdayWithError.propTypes = {
+  input: PropTypes.object.isRequired,
+  meta: PropTypes.object.isRequired,
+  props: PropTypes.object.isRequired,
 };
 
 const languageWithError = ({input, meta, ...props}) => {
@@ -80,6 +99,12 @@ const languageWithError = ({input, meta, ...props}) => {
     </Field>
     {withError({meta, props})}
   </div>;
+};
+
+languageWithError.propTypes = {
+  input: PropTypes.object.isRequired,
+  meta: PropTypes.object.isRequired,
+  props: PropTypes.object.isRequired,
 };
 
 const SyncValidationForm = (props) => {
@@ -109,6 +134,13 @@ const SyncValidationForm = (props) => {
   );
 };
 
+SyncValidationForm.propTypes = {
+  pristine: PropTypes.bool.isRequired,
+  reset: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  invalid: PropTypes.bool.isRequired,
+};
 
 const rf = reduxForm({
   form: 'syncValidation',

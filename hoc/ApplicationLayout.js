@@ -1,17 +1,18 @@
 import * as React from 'react';
 import {CognitoAuth} from 'amazon-cognito-auth-js/dist/amazon-cognito-auth';
-import {COGNITO_ID_TOKEN_COOKIE_NAME, cognitoAuthData} from '../credentials/cognito';
-
+import {
+  COGNITO_ID_TOKEN_COOKIE_NAME,
+  cognitoAuthData,
+} from '../credentials/cognito';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
 import fetchFromCookie from '../util/fetchFromCookie';
 import {actions as authActions} from '../store/reducers/auth';
-
 import getMuiThemeWithUA from '../util/getMuiThemeWithUA';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import PropTypes from 'prop-types';
+
 
 // Make sure react-tap-event-plugin only gets injected once
 // Needed for material-ui
@@ -22,7 +23,7 @@ if (!process.tapEventInjected) {
 
 
 const Layout = (Page) => {
-  return class extends React.Component {
+  class Wrapped extends React.Component {
     static async getInitialProps(ctx) {
       const {req} = ctx;
       const childProps = Page.getInitialProps ? Page.getInitialProps(ctx) : {};
@@ -73,15 +74,25 @@ const Layout = (Page) => {
       const muiTheme = getMuiThemeWithUA(this.props.userAgent);
       return <div>
         <MuiThemeProvider muiTheme={muiTheme}>
-        {
-          this.props.auth.signingIn ?
-            <div>loading...</div> :
-            <Page {...this.props}/>
-        }
+          {
+            this.props.auth.signingIn ?
+              <div>loading...</div> :
+              <Page {...this.props}/>
+          }
         </MuiThemeProvider>
       </div>;
     }
+  }
+
+  Wrapped.propTypes = {
+    userAgent: PropTypes.string.isRequired,
+    auth: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    setSigningIn: PropTypes.func.isRequired,
+    setAuthInst: PropTypes.func.isRequired,
   };
+
+  return Wrapped;
 };
 
 const mapStateToProps = (state) => ({
@@ -92,7 +103,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({...authActions}, dispatch);
 };
 
+
 export default (Page) => connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Layout(Page));

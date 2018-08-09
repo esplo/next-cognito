@@ -1,5 +1,7 @@
+import * as React from 'react';
 import fetch from 'isomorphic-unfetch';
 import {Link} from '../routes';
+import PropTypes from 'prop-types';
 
 const Page = ({stars}) =>
   <div>
@@ -10,10 +12,14 @@ const Page = ({stars}) =>
     Next stars: {stars}
   </div>;
 
-Page.getInitialProps = async ({req}) => {
+Page.getInitialProps = async () => {
   const res = await fetch('https://api.github.com/repos/zeit/next.js');
   const json = await res.json();
   return {stars: json.stargazers_count};
+};
+
+Page.propTypes = {
+  stars: PropTypes.number.isRequired,
 };
 
 export default Page;
