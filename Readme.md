@@ -23,7 +23,18 @@ a SPA exmaple by Next.js with amazon-cognito-auth-js
 
 ## usage
 
-remove `.sample` from `credential/cognito.json.sample`, and modify it
+1. Create a user pool on AWS Cognito console
+1. Create an app client **without app secret**
+1. Create Domain in "App integration" -> "Domain name"
+    - input a domain prefix and save
+1. Configure the app client
+    - Enabled Identity Providers: `Cognito User Pool`
+    - Sign in and sign out URLs: both `http://localhost:3111`
+    - Allowed OAuth Flows: `Implicit grant` (code grant might be used when Cognito SDK is fixed)
+    - Allowed OAuth Scopes: `email`, `openid`, `aws.cognito.signin.user.admin`, `profile`
+1. Launch Hosted UI (shown in "App client settings"), and create a sample user
+    - tips: you can confirm the user in "Users and groups"
+1. Remove `.sample` from `credential/cognito.json.sample`, and modify it
 
 ### development
 
