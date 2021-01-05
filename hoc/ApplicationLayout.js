@@ -56,7 +56,7 @@ const Layout = (Page) => {
       };
 
       // TODO: enable this when the bug in SDK is fixed
-      // auth.useCodeGrantFlow();
+      // authInst.useCodeGrantFlow();
       authInst.parseCognitoWebResponse(window.location.href);
 
       // check whether this user was already signed in
