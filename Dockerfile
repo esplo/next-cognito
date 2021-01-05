@@ -1,4 +1,4 @@
-ARG NODE_VERSION=10.8.0-alpine
+ARG NODE_VERSION=15.5.0-alpine3.12
 FROM node:${NODE_VERSION} as dev
 LABEL maintainer="esplo@users.noreply.github.com"
 
