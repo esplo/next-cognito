@@ -80,6 +80,10 @@ class Page extends React.Component {
             Links
           </Typography>
           <div>
+            <Link href="/">
+              <a>to Index</a>
+            </Link>
+            <span> / </span>
             <Link route='/blog/hello-world'>
               <a>Hello world</a>
             </Link>
