@@ -10,17 +10,7 @@ import fetchFromCookie from '../util/fetchFromCookie';
 import {actions as authActions} from '../store/reducers/auth';
 import getMuiThemeWithUA from '../util/getMuiThemeWithUA';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import PropTypes from 'prop-types';
-
-
-// Make sure react-tap-event-plugin only gets injected once
-// Needed for material-ui
-if (!process.tapEventInjected) {
-  injectTapEventPlugin();
-  process.tapEventInjected = true;
-}
-
 
 const Layout = (Page) => {
   class Wrapped extends React.Component {
