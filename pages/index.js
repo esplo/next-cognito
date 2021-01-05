@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {Link} from '../routes';
+import { Link } from '../routes';
 import ApplicationLayout from '../hoc/ApplicationLayout';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import IndexForm from '../forms/indexForm';
 import PropTypes from 'prop-types';
 
 class Page extends React.Component {
-  static async getInitialProps({req}) {
+  static async getInitialProps({ req }) {
     return {};
   }
 
@@ -33,7 +33,7 @@ class Page extends React.Component {
   };
 
   render() {
-    const {idToken} = this.props.auth;
+    const { idToken } = this.props.auth;
 
     return (
       <div>
@@ -51,12 +51,12 @@ class Page extends React.Component {
               <Button variant="outlined" onClick={this.logout}>Sign out</Button>
 
               <Typography variant="title" gutterBottom>
-                  Token
+                Token
               </Typography>
               {idToken}
 
               <Typography variant="title" gutterBottom>
-                  Token as JSON
+                Token as JSON
               </Typography>
               {this.parseIdToken(idToken)}
 
